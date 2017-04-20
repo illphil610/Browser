@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_forward"
-        android:title="Forward"
-        android:icon="@android:drawable/arrow_up_float"
-        app:showAsAction="ifRoom"/>
-
     <item android:id="@+id/action_back"
         android:title="Back"
-        android:icon="@android:drawable/arrow_down_float"
+        android:icon="@drawable/ic_undo_black_24dp"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_forward"
+        android:title="Forward"
+        android:icon="@drawable/ic_redo_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_new"
         android:title="New"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/ic_add_black_24dp"
         app:showAsAction="ifRoom"/>
 </menu>

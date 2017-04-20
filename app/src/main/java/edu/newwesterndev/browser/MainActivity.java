@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -88,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
                 if (currentFrag > 0) {
                     currentFrag--;
                     viewPager.setCurrentItem(currentFrag);
-                    Log.d("Fragment Number", "Opening Fragment: " + currentFrag);
+                    editText.setText(webAdapter.getUrl(currentFrag));
                 }
                 return true;
             case R.id.action_forward:
                 if (currentFrag < maxFrag - 1) {
                     currentFrag++;
                     viewPager.setCurrentItem(currentFrag);
-                    Log.d("Fragment Number", "Opening Fragment: " + currentFrag);
+                    editText.setText(webAdapter.getUrl(currentFrag));
                 }
                 return true;
             case R.id.action_new:
@@ -104,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 webAdapter.addUrl(editText.getText().toString());
                 webAdapter.notifyDataSetChanged();
                 viewPager.setCurrentItem(currentFrag);
-                Log.d("URL List", webAdapter.urls.toString());
 
                 // Move back a page because adapter always add two fragments
                 currentFrag--;
@@ -132,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
             urls.set(position, str);
         }
 
+        public String getUrl(int position) {
+            return urls.get(position).toString();
+        }
+
         @Override
         public void startUpdate(ViewGroup container) {
             super.startUpdate(container);
@@ -144,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Log.d("getItem", String.valueOf(position));
             return BrowserFragment.newInstance(position, urls.get(position).toString());
         }
 
@@ -152,6 +153,5 @@ public class MainActivity extends AppCompatActivity {
         public int getItemPosition(Object object) {
             return POSITION_NONE;
         }
-
     }
 }

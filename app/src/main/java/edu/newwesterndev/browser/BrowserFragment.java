@@ -20,7 +20,6 @@ public class BrowserFragment extends Fragment {
     private int position;
     private String url;
 
-    //private OnFragmentInteractionListener mListener;
 
     public BrowserFragment() {
         // Required empty public constructor
